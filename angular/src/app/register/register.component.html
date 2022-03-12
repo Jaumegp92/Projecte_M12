@@ -1,0 +1,79 @@
+<div>
+    <div>
+      <!--<img
+      />-->
+      <form
+        *ngIf="!isSuccessful"
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate
+      >
+        <div>
+          <label for="username">Nom d'usuari</label>
+          <input
+            type="text"
+            name="username"
+            [(ngModel)]="form.username"
+            required
+            minlength="3"
+            maxlength="20"
+            #username="ngModel"
+          />
+          <div *ngIf="username.errors && f.submitted">
+            <div *ngIf="username.errors['required']">Has d'introduir un nom d'usuari</div>
+            <div *ngIf="username.errors['minlength']">
+              El nom d'usuari ha de tenir 3 caràcters com a mínim
+            </div>
+            <div *ngIf="username.errors['maxlength']">
+              El nom d'usuari pot tenir 20 caràcters com a màxim
+            </div>
+          </div>
+        </div>
+        <div>
+          <label for="email">Correu electrònic</label>
+          <input
+            type="email"
+            name="email"
+            [(ngModel)]="form.email"
+            required
+            email
+            #email="ngModel"
+          />
+          <div *ngIf="email.errors && f.submitted">
+            <div *ngIf="email.errors['required']">Has d'introduir un correu electrònic</div>
+            <div *ngIf="email.errors['email']">
+              Has d'introduir un correu electrònic vàlid
+            </div>
+          </div>
+        </div>
+        <div>
+          <label for="password">Contrasenya</label>
+          <input
+            type="password"
+            name="password"
+            [(ngModel)]="form.password"
+            required
+            minlength="8"
+            #password="ngModel"
+          />
+          <div *ngIf="password.errors && f.submitted">
+            <div *ngIf="password.errors['required']">Has d'introduir una contrasenya</div>
+            <div *ngIf="password.errors['minlength']">
+              La contrasenya ha de tenir 8 caràcters com a mínim
+            </div>
+          </div>
+        </div>
+        <div>
+          <button>Registra't</button>
+        </div>
+        <div *ngIf="f.submitted && isSignUpFailed">
+          Error en el registre!<br />{{ errorMessage }}
+        </div>
+      </form>
+      <div *ngIf="isSuccessful">
+        Registre correcte!
+      </div>
+    </div>
+  </div>
+  

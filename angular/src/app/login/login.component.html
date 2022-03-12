@@ -1,1 +1,70 @@
-<p>login works!</p>
+<div>
+    <div>
+      <!--<img
+        id=""
+        src=""
+        class=""
+      />-->
+      <form
+        *ngIf="!isLoggedIn"
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate
+      >
+        <div>
+          <label for="username">Nom d'usuari</label>
+          <input
+            type="text"
+            name="username"
+            [(ngModel)]="form.username"
+            required
+            #username="ngModel"
+          />
+          <div
+            role="alert"
+            *ngIf="username.errors && f.submitted"
+          >
+            Has d'introduir un nom d'usuari
+          </div>
+        </div>
+        <div>
+          <label for="password">Contrasenya</label>
+          <input
+            type="password"
+            name="password"
+            [(ngModel)]="form.password"
+            required
+            minlength="8"
+            #password="ngModel"
+          />
+          <div
+            role="alert"
+            *ngIf="password.errors && f.submitted"
+          >
+            <div *ngIf="password.errors['required']">Has d'introduir una contrasenya</div>
+            <div *ngIf="password.errors['minlength']">
+              La contrasenya ha de tenir 8 caràcters com a mínim
+            </div>
+          </div>
+        </div>
+        <div>
+          <button>
+            Inici
+          </button>
+        </div>
+        <div>
+          <div
+            role="alert"
+            *ngIf="f.submitted && isLoginFailed"
+          >
+            Error d'inici de sessió: {{ errorMessage }}
+          </div>
+        </div>
+      </form>
+      <div *ngIf="isLoggedIn">
+        Has iniciat la sessió com {{ roles }}.
+      </div>
+    </div>
+  </div>
+  
