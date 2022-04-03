@@ -6,6 +6,9 @@ import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BoardUserComponent } from './board-user/board-user.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
+import { EntradesListComponent } from './entrades-list/entrades-list.component';
+import { EntradaDetailsComponent } from './entrada-details/entrada-details.component';
+import { AddEntradaComponent } from './add-entrada/add-entrada.component';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
@@ -13,7 +16,10 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'user', component: BoardUserComponent },
   { path: 'admin', component: BoardAdminComponent },
-  { path: '', redirectTo: 'home', pathMatch: 'full' }
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'entrades', component: EntradesListComponent },
+  { path: 'entrades/:id', component: EntradaDetailsComponent },
+  { path: 'add', component: AddEntradaComponent }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

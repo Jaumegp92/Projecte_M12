@@ -1,0 +1,78 @@
+<div *ngIf="viewMode; else editable">
+    <div *ngIf="currentEntrada.id">
+      <h4>Entrada</h4>
+      <div>
+        <label><strong>Títol:</strong></label> {{ currentEntrada.title }}
+      </div>
+      <div>
+        <label><strong>Descripció:</strong></label>
+        {{ currentEntrada.description }}
+      </div>
+      <div>
+        <label><strong>Contingut:</strong></label>
+        {{ currentEntrada.body }}
+      </div>
+      
+      <a
+        class="badge badge-warning"
+        routerLink="/entrades/{{ currentEntrada.id }}"
+      >
+        Editar
+      </a>
+    </div>
+    <div *ngIf="!currentEntrada">
+      <br />
+      <p>Clica a una Entrada...</p>
+    </div>
+  </div>
+  <ng-template #editable>
+    <div *ngIf="currentEntrada.id" class="edit-form">
+      <h4>Entrada</h4>
+      <form>
+        <div class="form-group">
+          <label for="title">Títlol</label>
+          <input
+            type="text"
+            class="form-control"
+            id="title"
+            [(ngModel)]="currentEntrada.title"
+            name="title"
+          />
+        </div>
+        <div class="form-group">
+          <label for="description">Descripció</label>
+          <input
+            type="text"
+            class="form-control"
+            id="description"
+            [(ngModel)]="currentEntrada.description"
+            name="description"
+          />
+        </div>
+        <label for="body">Contingut</label>
+        <textarea
+        class="form-control"
+        id="body"
+        [(ngModel)]="currentEntrada.body"
+        name="body"
+        ></textarea>
+      </form>
+   
+      <button class="badge badge-danger mr-2" (click)="deleteEntrada()">
+        Eliminar
+      </button>
+      <button
+        type="submit"
+        class="badge badge-success mb-2"
+        (click)="updateEntrada()"
+      >
+        Actualitzar
+      </button>
+      <p>{{ message }}</p>
+    </div>
+    <div *ngIf="!currentEntrada.id">
+      <br />
+      <p>No es pot accedir a aquesta entrada...</p>
+    </div>
+  </ng-template>
+  
