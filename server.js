@@ -9,9 +9,7 @@ var corsOptions = {
 };
 
 app.use(cors(corsOptions));
-
 app.use(express.json());
-
 app.use(express.urlencoded({ extended: true }));
 
 const db = require("./models");

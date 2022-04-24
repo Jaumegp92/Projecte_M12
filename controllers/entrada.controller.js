@@ -3,15 +3,23 @@ const Entrada = db.entrada;
 // Crear i guardar
 exports.create = (req, res) => {
 
-    // Validar
-    if(!req.body.title) {
+    //Validar
+  if(!req.body.title) {
     res.status(400).send({ message: "El contingut no pot estar buit!" });
     return;
   }
+  /*if(!req.body.body) {
+    res.status(400).send({ message: "El contingut no pot estar buit!" });
+    return;
+  }
+  if(!req.body.createdBy) {
+    res.status(400).send({ message: "Es requereix un autor!" });
+    return;
+  }*/
+
   // crear
   const entrada = new Entrada({
     title: req.body.title,
-    description: req.body.description,
     body: req.body.body,
     createdBy: req.body.createdBy,
   });
