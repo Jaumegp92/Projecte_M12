@@ -8,14 +8,14 @@ exports.create = (req, res) => {
     res.status(400).send({ message: "El contingut no pot estar buit!" });
     return;
   }
-  /*if(!req.body.body) {
+  if(!req.body.body) {
     res.status(400).send({ message: "El contingut no pot estar buit!" });
     return;
   }
   if(!req.body.createdBy) {
     res.status(400).send({ message: "Es requereix un autor!" });
     return;
-  }*/
+  }
 
   // crear
   const entrada = new Entrada({
