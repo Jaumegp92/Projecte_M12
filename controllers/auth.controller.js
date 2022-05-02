@@ -31,7 +31,7 @@ exports.signup = (req, res) => {
               res.status(500).send({ message: err });
               return;
             }
-            res.send({ message: "Usuari registrat correctament!" });
+            res.send({ message: "User was registered successfully!" });
           });
         }
       );
@@ -47,7 +47,7 @@ exports.signup = (req, res) => {
             res.status(500).send({ message: err });
             return;
           }
-          res.send({ message: "Usuari registrat correctament!" });
+          res.send({ message: "User was registered successfully!" });
         });
       });
     }
@@ -64,7 +64,7 @@ exports.signin = (req, res) => {
         return;
       }
       if (!user) {
-        return res.status(404).send({ message: "Aquest usuari no existeix." });
+        return res.status(404).send({ message: "User Not found." });
       }
       var passwordIsValid = bcrypt.compareSync(
         req.body.password,
@@ -73,11 +73,11 @@ exports.signin = (req, res) => {
       if (!passwordIsValid) {
         return res.status(401).send({
           accessToken: null,
-          message: "Contrasenya incorrecta!"
+          message: "Invalid Password!"
         });
       }
       var token = jwt.sign({ id: user.id }, config.secret, {
-        expiresIn: 86400 // 24 hores
+        expiresIn: 86400 // 24 hours
       });
       var authorities = [];
       for (let i = 0; i < user.roles.length; i++) {

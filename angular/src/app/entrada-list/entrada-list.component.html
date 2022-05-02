@@ -1,0 +1,45 @@
+<div class="list row">
+    <div class="col-md-8">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Buscar per títol"
+          [(ngModel)]="title"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="searchTitle()"
+          >
+            Buscar
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h4>Llista d'entrades</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let entrada of entrades; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveEntrada(entrada, i)"
+        >
+          {{ entrada.title }}
+          
+        </li>
+      </ul>
+      <button class="m-3 btn btn-sm btn-danger" (click)="removeAllEntrada()">
+        Eliminar tots
+      </button>
+    </div>
+    <div class="col-md-6">
+      <app-entrada-details
+        [viewMode]="true"
+        [currentEntrada]="currentEntrada"
+      ></app-entrada-details>
+    </div>
+  </div>
+  

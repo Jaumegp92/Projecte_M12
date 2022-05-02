@@ -1,1 +1,1 @@
-# Projecte MEAN Stack
+# MEAN STACK

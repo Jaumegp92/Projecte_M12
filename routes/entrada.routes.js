@@ -1,11 +1,14 @@
 module.exports = app => {
-    const entrades = require("../controllers/entrada.controller.js");
+    const entrada = require("../controllers/entrada.controller.js");
+  
     var router = require("express").Router();
-    router.post("/", entrades.create);
-    router.get("/", entrades.findAll);
-    router.get("/:id", entrades.findOne);
-    router.put("/:id", entrades.update);
-    router.delete("/:id", entrades.delete);
-    router.delete("/", entrades.deleteAll);
-    app.use('/api/entrades', router);
+  
+    router.post("/", entrada.create);
+    router.get("/", entrada.findAll);
+    router.get("/:id", entrada.findOne);
+    router.put("/:id", entrada.update);
+    router.delete("/:id", entrada.delete);
+    router.delete("/", entrada.deleteAll);
+    app.use("/api/entrades", router);
+    
   };

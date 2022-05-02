@@ -28,21 +28,16 @@
           (click)="setActiveEntrada(entrada, i)"
         >
           {{ entrada.title }}
-          <br>
-          {{ entrada.description}}
-          <br>
-          {{ entrada.body }}
+          
         </li>
       </ul>
-      <button class="m-3 btn btn-sm btn-danger" (click)="removeAllEntrades()">
-        Eliminar tot
-      </button>
     </div>
     <div class="col-md-6">
-        <app-entrada-details
-          [viewMode]="true"
-          [currentEntrada]="currentEntrada"
-        ></app-entrada-details>
+      <app-details-user
+        [viewMode]="true"
+        [currentEntrada]="currentEntrada"
+      ></app-details-user>
     </div>
   </div>
   
+

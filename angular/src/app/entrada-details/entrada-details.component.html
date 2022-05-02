@@ -2,14 +2,14 @@
     <div *ngIf="currentEntrada.id">
       <h4>Entrada</h4>
       <div>
-        <label><strong>Títol:</strong></label> {{ currentEntrada.title }}
+        <label><strong>Títol:</strong></label> 
+        <br>
+        {{ currentEntrada.title }}
       </div>
+      <br>
       <div>
-        <label><strong>Descripció:</strong></label>
-        {{ currentEntrada.description }}
-      </div>
-      <div>
-        <label><strong>Contingut:</strong></label>
+        <label><strong>Història:</strong></label>
+        <br>
         {{ currentEntrada.body }}
       </div>
       
@@ -20,17 +20,19 @@
         Editar
       </a>
     </div>
+  
     <div *ngIf="!currentEntrada">
       <br />
-      <p>Clica a una Entrada...</p>
+      <p>Clica a l'entrada...</p>
     </div>
   </div>
+  
   <ng-template #editable>
     <div *ngIf="currentEntrada.id" class="edit-form">
       <h4>Entrada</h4>
       <form>
         <div class="form-group">
-          <label for="title">Títlol</label>
+          <label for="title">Títol</label>
           <input
             type="text"
             class="form-control"
@@ -40,27 +42,22 @@
           />
         </div>
         <div class="form-group">
-          <label for="description">Descripció</label>
-          <input
+          <label for="body">Història</label>
+          <textarea
             type="text"
             class="form-control"
-            id="description"
-            [(ngModel)]="currentEntrada.description"
-            name="description"
-          />
+            id="body"
+            [(ngModel)]="currentEntrada.body"
+            name="body"
+          ></textarea>
         </div>
-        <label for="body">Contingut</label>
-        <textarea
-        class="form-control"
-        id="body"
-        [(ngModel)]="currentEntrada.body"
-        name="body"
-        ></textarea>
+  
       </form>
-   
+  
       <button class="badge badge-danger mr-2" (click)="deleteEntrada()">
         Eliminar
       </button>
+  
       <button
         type="submit"
         class="badge badge-success mb-2"
@@ -70,9 +67,9 @@
       </button>
       <p>{{ message }}</p>
     </div>
+  
     <div *ngIf="!currentEntrada.id">
       <br />
-      <p>No es pot accedir a aquesta entrada...</p>
+      <p>No pots accedir a aquesta entrada...</p>
     </div>
   </ng-template>
-  

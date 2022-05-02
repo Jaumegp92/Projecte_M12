@@ -1,26 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { Entrada } from 'src/app/models/entrada.model';
-import { EntradesService } from 'src/app/_services/entrades.service';
-
+import { EntradaService } from 'src/app/_services/entrada.service';
 @Component({
-  selector: 'app-entrades-list',
-  templateUrl: './entrades-list.component.html',
-  styleUrls: ['./entrades-list.component.css']
+  selector: 'app-entrada-list',
+  templateUrl: './entrada-list.component.html',
+  styleUrls: ['./entrada-list.component.css']
 })
-export class EntradesListComponent implements OnInit {
+export class EntradaListComponent implements OnInit {
   entrades?: Entrada[];
   currentEntrada: Entrada = {};
   currentIndex = -1;
   title = '';
-
-  constructor(private entradesService: EntradesService) { }
-
+  constructor(private entradaService: EntradaService) { }
   ngOnInit(): void {
-    this.retrieveEntrades();
+    this.retrieveEntrada();
   }
-
-  retrieveEntrades(): void {
-    this.entradesService.getAll()
+  retrieveEntrada(): void {
+    this.entradaService.getAll()
       .subscribe({
         next: (data) => {
           this.entrades = data;
@@ -29,9 +25,8 @@ export class EntradesListComponent implements OnInit {
         error: (e) => console.error(e)
       });
   }
-
   refreshList(): void {
-    this.retrieveEntrades();
+    this.retrieveEntrada();
     this.currentEntrada = {};
     this.currentIndex = -1;
   }
@@ -39,8 +34,8 @@ export class EntradesListComponent implements OnInit {
     this.currentEntrada = entrada;
     this.currentIndex = index;
   }
-  removeAllEntrades(): void {
-    this.entradesService.deleteAll()
+  removeAllEntrada(): void {
+    this.entradaService.deleteAll()
       .subscribe({
         next: (res) => {
           console.log(res);
@@ -52,7 +47,7 @@ export class EntradesListComponent implements OnInit {
   searchTitle(): void {
     this.currentEntrada = {};
     this.currentIndex = -1;
-    this.entradesService.findByTitle(this.title)
+    this.entradaService.findByTitle(this.title)
       .subscribe({
         next: (data) => {
           this.entrades = data;
@@ -61,6 +56,5 @@ export class EntradesListComponent implements OnInit {
         error: (e) => console.error(e)
       });
   }
-
-
 }
+

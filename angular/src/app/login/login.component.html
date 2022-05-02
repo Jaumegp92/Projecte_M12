@@ -1,9 +1,9 @@
-<div>
-    <div>
+<div class="col-md-12">
+    <div class="card card-container">
       <!--<img
-        id=""
-        src=""
-        class=""
+        id="profile-img"
+        src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+        class="profile-img-card"
       />-->
       <form
         *ngIf="!isLoggedIn"
@@ -12,58 +12,63 @@
         #f="ngForm"
         novalidate
       >
-        <div>
+        <div class="form-group">
           <label for="username">Nom d'usuari</label>
           <input
             type="text"
+            class="form-control"
             name="username"
             [(ngModel)]="form.username"
             required
             #username="ngModel"
           />
           <div
+            class="alert alert-danger"
             role="alert"
             *ngIf="username.errors && f.submitted"
           >
-            Has d'introduir un nom d'usuari
+            Nom d'usuari necessari!
           </div>
         </div>
-        <div>
+        <div class="form-group">
           <label for="password">Contrasenya</label>
           <input
             type="password"
+            class="form-control"
             name="password"
             [(ngModel)]="form.password"
             required
-            minlength="8"
+            minlength="6"
             #password="ngModel"
           />
           <div
+            class="alert alert-danger"
             role="alert"
             *ngIf="password.errors && f.submitted"
           >
-            <div *ngIf="password.errors['required']">Has d'introduir una contrasenya</div>
+            <div *ngIf="password.errors['required']">Contrasenya és necessària</div>
             <div *ngIf="password.errors['minlength']">
-              La contrasenya ha de tenir 8 caràcters com a mínim
+              La contrasenya necessita mínim 6 caràcters
             </div>
           </div>
         </div>
-        <div>
-          <button>
+        <div class="form-group">
+          <button class="btn btn-primary btn-block">
             Inici
           </button>
         </div>
-        <div>
+        <div class="form-group">
           <div
+            class="alert alert-danger"
             role="alert"
             *ngIf="f.submitted && isLoginFailed"
           >
-            Error d'inici de sessió: {{ errorMessage }}
+            Inici fallit: {{ errorMessage }}
           </div>
         </div>
       </form>
-      <div *ngIf="isLoggedIn">
-        Has iniciat la sessió com {{ roles }}.
+      <div class="alert alert-success" *ngIf="isLoggedIn">
+        Has iniciat com {{ roles }}.
       </div>
     </div>
   </div>

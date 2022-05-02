@@ -1,35 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { Entrada } from 'src/app/models/entrada.model';
-import { EntradesService } from 'src/app/_services/entrades.service';
-
+import { EntradaService } from 'src/app/_services/entrada.service';
 @Component({
   selector: 'app-add-entrada',
   templateUrl: './add-entrada.component.html',
   styleUrls: ['./add-entrada.component.css']
 })
 export class AddEntradaComponent implements OnInit {
-
     entrada: Entrada = {
     title: '',
     body: '',
-    description: '',
-    createdBy: ''
   };
-
   submitted = false;
-  constructor(private entradesService: EntradesService) { }
-
-
+  constructor(private entradaService: EntradaService) { }
   ngOnInit(): void {
   }
-  
   saveEntrada(): void {
     const data = {
       title: this.entrada.title,
-      description: this.entrada.description,
       body: this.entrada.body
     };
-    this.entradesService.create(data)
+    this.entradaService.create(data)
       .subscribe({
         next: (res) => {
           console.log(res);
@@ -42,9 +33,8 @@ export class AddEntradaComponent implements OnInit {
     this.submitted = false;
     this.entrada = {
       title: '',
-      description: '',
-      body: ''
+      body: '',
     };
   }
-
 }
+

@@ -1,41 +1,36 @@
 <div>
-  <div class="submit-form">
-    <div *ngIf="!submitted">
-      <div class="form-group">
-        <label for="title">Títol</label>
-        <input
-          type="text"
-          class="form-control"
-          id="title"
-          required
-          [(ngModel)]="entrada.title"
-          name="title"
-        />
+  <div class="col-md-6">
+    <h4>Crear una entrada</h4>
+  </div>
+    <div class="submit-form">
+      <div *ngIf="!submitted">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input
+            type="text"
+            class="form-control"
+            id="title"
+            required
+            [(ngModel)]="entrada.title"
+            name="title"
+          />
+        </div>
+        <div class="form-group">
+          <label for="body">Història</label>
+          <textarea
+            class="form-control"
+            id="body"
+            required
+            [(ngModel)]="entrada.body"
+            name="body"
+          ></textarea>
+        </div>
+        <button (click)="saveEntrada()" class="btn btn-success">Guardar</button>
       </div>
-      <div class="form-group">
-        <label for="description">Descripció</label>
-        <input
-          class="form-control"
-          id="description"
-          required
-          [(ngModel)]="entrada.description"
-          name="description"
-        />
+      <div *ngIf="submitted">
+        <h4>Entrada guardada correctament!</h4>
+        <button class="btn btn-success" (click)="newEntrada()">Afegir</button>
       </div>
-      <div class="form-group">
-        <textarea
-        id="body"
-        required
-        [(ngModel)]="entrada.body"
-        name="body"
-        ></textarea>
-        <label for="body">Entrada</label>
-      </div>
-      <button (click)="saveEntrada()" class="btn btn-success">Crea</button>
-    </div>
-    <div *ngIf="submitted">
-      <h4>Entrada creada correctament</h4>
-      <button class="btn btn-success" (click)="newEntrada()">Afegir</button>
     </div>
   </div>
-</div>
+  

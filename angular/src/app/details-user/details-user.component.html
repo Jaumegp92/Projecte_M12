@@ -1,0 +1,22 @@
+
+<div *ngIf="viewMode">
+    <div *ngIf="currentEntrada.id">
+      <h4>Entrada</h4>
+      <div>
+        <label><strong>Títol:</strong></label> 
+        <br>
+        {{ currentEntrada.title }}
+      </div>
+      <br>
+      <div>
+        <label><strong>Història:</strong></label>
+        <br>
+        {{ currentEntrada.body }}
+      </div>
+    </div>
+  
+    <div *ngIf="!currentEntrada">
+      <br />
+      <p>Clica a l'entrada...</p>
+    </div>
+  </div>

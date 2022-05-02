@@ -12,4 +12,3 @@ export class ProfileComponent implements OnInit {
     this.currentUser = this.token.getUser();
   }
 }
-

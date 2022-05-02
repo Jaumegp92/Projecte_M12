@@ -5,14 +5,18 @@ let Entrada = mongoose.model(
 
        title: String,
        body: String,
-       createdBy: String,
        createdAt: {type: Date, default: Date.now() },
-       likes: { type: Number, default: 0 },
-       likedBy: Array,
-       comments: [{
-         comment: String,
-         commentator: String
-  }]
+       comments: {
+         type: mongoose.Schema.Types.ObjectId,
+         ref: "Comment",
+         default: null
+        },
+        likes: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Like",
+          default: null
+        }
+       
     }).method("toJSON", function() {
         const { __v, _id, ...object } = this.toObject();
         object.id = _id;
