@@ -15,13 +15,13 @@ execució:
 - situar-se a la carpeta arrel
 - escriure les comandes
 
-- npm install
-- node server.js
+   - npm install
+   - node server.js
 
 2. obrir un altre terminal
 
 - situar-se a la carpeta angular
 - escriure les comandes
 
-- npm install
-- ng serve --port 8081
+  - npm install
+  - ng serve --port 8081
