@@ -8,11 +8,11 @@ const Entrada = db.entrada;
 exports.create = (req, res) => {
     // validació
     if (!req.body.title) {
-      res.status(400).send({ message: "Contingut no pot estar buit!!" });
+      res.status(400).send({ message: "El contingut no pot estar buit!!" });
       return;
     }
     if (!req.body.body) {
-        res.status(400).send({ message: "Contingut no pot estar buit!" });
+        res.status(400).send({ message: "El contingut no pot estar buit!" });
         return;
       }
     // crear
@@ -30,7 +30,7 @@ exports.create = (req, res) => {
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Error alhora de crear l'entrada."
+            err.message || "Error a l'hora de crear l'entrada."
         });
       });
   };
@@ -49,7 +49,7 @@ exports.findAll = (req, res) => {
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while retrieving tutorials."
+            err.message || "No s'han pogut recuperar les entrades."
         });
       });
   };
@@ -63,13 +63,13 @@ exports.findOne = (req, res) => {
     Entrada.findById(id)
       .then(data => {
         if (!data)
-          res.status(404).send({ message: "Not found Tutorial with id " + id });
+          res.status(404).send({ message: "No existeix l'entrada amn id " + id });
         else res.send(data);
       })
       .catch(err => {
         res
           .status(500)
-          .send({ message: "Error retrieving Tutorial with id=" + id });
+          .send({ message: "No s'ha pogut recuperar l'entrada amb id=" + id });
       });
   };
 
@@ -118,7 +118,7 @@ exports.delete = (req, res) => {
       })
       .catch(err => {
         res.status(500).send({
-          message: "no es pot eliminar l'entrada amb id=" + id
+          message: "no es pot eliminar l'entrada amb id= " + id
         });
       });
   };
@@ -130,13 +130,13 @@ exports.deleteAll = (req, res) => {
     Entrada.deleteMany({})
       .then(data => {
         res.send({
-          message: `${data.deletedCount} Entrades eliminades correctament !`
+          message: `${data.deletedCount} Totes les entrades eliminades correctament !`
         });
       })
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Error."
+            err.message || "Error!, no s'han pogut eliminar les entrades"
         });
       });
   };

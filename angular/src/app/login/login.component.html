@@ -2,7 +2,7 @@
     <div class="card card-container">
       <!--<img
         id="profile-img"
-        src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+        src=""
         class="profile-img-card"
       />-->
       <form
@@ -27,7 +27,7 @@
             role="alert"
             *ngIf="username.errors && f.submitted"
           >
-            Nom d'usuari necessari!
+            El camp nom d'usuari és obligatori!
           </div>
         </div>
         <div class="form-group">
@@ -46,9 +46,9 @@
             role="alert"
             *ngIf="password.errors && f.submitted"
           >
-            <div *ngIf="password.errors['required']">Contrasenya és necessària</div>
+            <div *ngIf="password.errors['required']">El camp contrasenya és obligatori</div>
             <div *ngIf="password.errors['minlength']">
-              La contrasenya necessita mínim 6 caràcters
+              La contrasenya necessita un mínim de 6 caràcters
             </div>
           </div>
         </div>

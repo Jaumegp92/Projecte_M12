@@ -6,16 +6,21 @@ let Entrada = mongoose.model(
        title: String,
        body: String,
        createdAt: {type: Date, default: Date.now() },
-       comments: {
+       comments: [
+         {
          type: mongoose.Schema.Types.ObjectId,
          ref: "Comment",
          default: null
-        },
-        likes: {
+        }
+      ],
+      like: {Type: Number, default:0},
+        likedBy: [
+          {
           type: mongoose.Schema.Types.ObjectId,
-          ref: "Like",
+          ref: "User",
           default: null
         }
+      ]
        
     }).method("toJSON", function() {
         const { __v, _id, ...object } = this.toObject();

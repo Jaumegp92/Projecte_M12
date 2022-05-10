@@ -7,5 +7,4 @@ db.role = require("./role.model");
 db.ROLES = ["user", "admin"];
 db.entrada = require("./entrada.model");
 db.comment = require("./comment.model");
-db.like = require("./like.model"); 
 module.exports = db;

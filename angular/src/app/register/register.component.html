@@ -2,7 +2,7 @@
     <div class="card card-container">
       <!--<img
         id="profile-img"
-        src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+        src=""
         class="profile-img-card"
       />-->
       <form
@@ -13,7 +13,7 @@
         novalidate
       >
         <div class="form-group">
-          <label for="username">Username</label>
+          <label for="username">Nom d'usuari</label>
           <input
             type="text"
             class="form-control"
@@ -25,17 +25,17 @@
             #username="ngModel"
           />
           <div class="alert-danger" *ngIf="username.errors && f.submitted">
-            <div *ngIf="username.errors['required']">Username is required</div>
+            <div *ngIf="username.errors['required']">El camp nom d'usuari és obligatori</div>
             <div *ngIf="username.errors['minlength']">
-              El nom d'usuari ha de tenir mínim 3 caràcters
+              El nom d'usuari ha de tenir un mínim de 3 caràcters
             </div>
             <div *ngIf="username.errors['maxlength']">
-              El nom d'usuari ha de tenir màxim 20 caràcters
+              El nom d'usuari ha de tenir un màxim de 20 caràcters
             </div>
           </div>
         </div>
         <div class="form-group">
-          <label for="email">Email</label>
+          <label for="email">Correu electrònic</label>
           <input
             type="email"
             class="form-control"
@@ -46,7 +46,7 @@
             #email="ngModel"
           />
           <div class="alert-danger" *ngIf="email.errors && f.submitted">
-            <div *ngIf="email.errors['required']">Email is required</div>
+            <div *ngIf="email.errors['required']">El camp correu electrònic és obligatori</div>
             <div *ngIf="email.errors['email']">
               Cal que sigui un correu vàlid
             </div>
@@ -64,9 +64,9 @@
             #password="ngModel"
           />
           <div class="alert-danger" *ngIf="password.errors && f.submitted">
-            <div *ngIf="password.errors['required']">Password is required</div>
+            <div *ngIf="password.errors['required']">El camp contrasenya és obligatori</div>
             <div *ngIf="password.errors['minlength']">
-              La contrasenya ha de tenir mínim 6 caràcterrs
+              La contrasenya ha de tenir un mínim de 6 caràcterrs
             </div>
           </div>
         </div>
@@ -74,7 +74,7 @@
           <button class="btn btn-primary btn-block">Regitra't</button>
         </div>
         <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
-          Registre fallat!<br />{{ errorMessage }}
+          Registre incorrecte!<br />{{ errorMessage }}
         </div>
       </form>
       <div class="alert alert-success" *ngIf="isSuccessful">
