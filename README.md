@@ -2,11 +2,11 @@
 
 requisits:
 
-Node.js v16.13.2
-gestor de paquets npm v8.5.3
-Angular CLI v13.2.4
-MongoDB v5.0.5
-Robo3T (opcional ver visualitzar i gestionar la base de dades)
+- Node.js v16.13.2
+- gestor de paquets npm v8.5.3
+- Angular CLI v13.2.4
+- MongoDB v5.0.5
+- Robo3T (opcional ver visualitzar i gestionar la base de dades)
 
 execució:
 
